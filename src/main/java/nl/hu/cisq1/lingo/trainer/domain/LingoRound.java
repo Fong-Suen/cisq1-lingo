@@ -22,13 +22,9 @@ public class LingoRound {
 
     public String guess(String attempt){
 
-        System.out.println(attempt + " 21");
         List<Mark> markList = getMarks(attempt);
         previousHint = new Feedback(attempt,markList).giveHint(previousHint);
 
-        System.out.println("turn: "+ turn);
-        System.out.println("Your Guess: " + attempt);
-        System.out.println("Your Hint is: " + previousHint);
         if (previousHint.equals(toGuess)){
             wordIsGuessed = true;
             return previousHint;

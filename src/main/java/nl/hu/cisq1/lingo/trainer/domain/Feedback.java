@@ -32,11 +32,7 @@ public class Feedback {
                 hintCharList[index] = attempt.charAt(index);
                 hint = String.valueOf(hintCharList);
 
-                System.out.println(attempt);
-                System.out.println(hint);
-                System.out.println(mark);
-                System.out.println(attempt.charAt(index));
-                System.out.println(index);
+
 
             }
             index+=1;

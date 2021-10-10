@@ -24,28 +24,18 @@ public class LingoGame {
             if (lingoRound.isWordIsGuessed()){
                 status = Status.WON;
                 setPoints();
-                System.out.println("Current points: "+points);
             }
             if (lingoRound.gameOver()){
                 status = Status.LOST;
-                System.out.println("Game over!: \nyour points: " + points);
             }
         }
-        else if (status==Status.WON){
-            System.out.println("You have won the game, start the next round!");
-        }
-        else {
-            System.out.println("You have lost the game, start a new game!");
-        }
+
     }
 
     public void nextRound(String newToGuess){
         if (status==Status.WON){
             lingoRound = new LingoRound(newToGuess);
             status = Status.PLAYING;
-        }
-        else {
-            System.out.println("Can't start a new round until you finish your current round!");
         }
     }
 
