@@ -1,15 +1,24 @@
 package nl.hu.cisq1.lingo.trainer.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class LingoGame {
     private LingoRound lingoRound;
     private int points;
     private Status status;
+    private Long id;
 
 
     public LingoGame(LingoRound lingoRound){
         status = Status.PLAYING;
         this.lingoRound = lingoRound;
         points = 0;
+    }
+
+    public LingoGame() {
+
     }
 
     public void newLingoGame(LingoRound lingoRound){
@@ -56,24 +65,42 @@ public class LingoGame {
         return points;
     }
 
+    /*TODO Remove later, only added because Spring held me at gunpoint and forced me*/
+    public void setPoints(int points) {
+        this.points = points;
+    }
 
     /*TODO Remove later, this is purely for testing purposes*/
     public Status getStatus() {
         return status;
     }
 
+    /*TODO Remove later, only added because Spring held me at gunpoint and forced me*/
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     /*
-            na 5 kansen wordt er gecheckt of je het woord hebt geraden,
-            als niet dan opnieuw beginnen en punten printen
-            als je het woord hebt geraden voor 5 pogingen dan
-            krijg je punten op basis van welke beurt het is
-            een Quit functie toevoegen.
-            een functie toevoegen dat:
-                -de huidige hint geeft,
-                -de poging geeft
-                -de marks terug geeft
-            */
+                na 5 kansen wordt er gecheckt of je het woord hebt geraden,
+                als niet dan opnieuw beginnen en punten printen
+                als je het woord hebt geraden voor 5 pogingen dan
+                krijg je punten op basis van welke beurt het is
+                een Quit functie toevoegen.
+                een functie toevoegen dat:
+                    -de huidige hint geeft,
+                    -de poging geeft
+                    -de marks terug geeft
+                */
     private void setPoints(){
         points += 5 * (5-lingoRound.currentTurn()) +5;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
     }
 }
